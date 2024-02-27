@@ -1,0 +1,34 @@
+{
+  "prettier": {
+    "printWidth": 120
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "es2022": true
+    },
+    "plugins": [
+      "html"
+    ],
+    "extends": [
+      "eslint:recommended"
+    ]
+  },
+  "dependencies": {
+    "@gramex/network": "^2.0.0",
+    "@gramex/ui": "^0.3.0",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.2",
+    "d3": "^7.8.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-plugin-html": "^7.1.0",
+    "prettier": "^3.1.0"
+  }
+}
