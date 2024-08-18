@@ -1,6 +1,7 @@
-/* global d3, bootstrap */
-import { network } from "./node_modules/@gramex/network/dist/network.js";
-import { pc } from "./node_modules/@gramex/ui/dist/format.js";
+/* global bootstrap */
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+import { network } from "https://cdn.jsdelivr.net/npm/@gramex/network@2";
+import { pc } from "https://cdn.jsdelivr.net/npm/@gramex/ui/dist/format.js";
 
 const { nodes, links } = await fetch("papers.json").then((r) => r.json());
 
@@ -14,7 +15,7 @@ const riColor = d3
 
 graph.nodes
   .attr("fill", (d) => riColor(d["RISK"]))
-  .attr("stroke", (d) => (d.type == "paper" ? "blue" : "black"))
+  .attr("stroke", (d) => (d.type == "paper" ? "var(--bs-primary)" : "var(--bs-body-color)"))
   .attr("stroke-width", (d) => (d.type == "paper" ? 1 : 0.5))
   .attr("r", 5)
   .attr("data-bs-toggle", "tooltip")
@@ -27,8 +28,8 @@ graph.nodes
         : ["Author Name", "Org Division", "Org Name", "City"]
       )
         .map((col) => `<div class="text-start"><strong>${col}</strong>: ${d[col]}</div>`)
-        .join(""),
+        .join("")
   );
-graph.links.attr("stroke", "rgba(0,0,0,0.2)");
+graph.links.attr("stroke", "rgba(var(--bs-body-color-rgb), 0.2)");
 
-new bootstrap.Tooltip("#authorship-network", { selector: '[data-bs-toggle="tooltip"]', html: true });
+new bootstrap.Tooltip("body", { selector: '[data-bs-toggle="tooltip"]', html: true });
